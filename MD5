@@ -1,7 +1,7 @@
-222acedae91cc05f11006ba6eb093a96 *DESCRIPTION
+2e28af60f30a1c813263a4af5018de3c *DESCRIPTION
 01539ed736815b69d1b0a988da856ae0 *LICENSE
 b7ac9e868ec7d060a97d50c1ff995a34 *NAMESPACE
-7de72ac0ea50ec7dd1f3f5d097be8a15 *NEWS
+e7c36cc9042a209e4acae33f85fdcb3d *NEWS
 fe45fdd16ed871f4f6de3bd1552b7576 *R/curl.R
 1d1634715543b4c25ba76da027e9a93c *R/download.R
 d152b62af078673f81edc2b2bac0fb52 *R/echo.R
@@ -23,14 +23,14 @@ d2d795b9b7de427a846cbf1e10f67361 *R/sysdata.rda
 a2241f17ff50ceadd834cb751e5961c7 *R/upload.R
 0c85a79b2932bd881c2f6650ea91487e *R/utilities.R
 d2761c5dac1f5b09e0532fb478c2a0e7 *R/writer.R
-8cc5cd9c9cae3e71d3b7e70a14f452e9 *build/vignette.rds
+d7c32973ee66cd60ec8abefea5a20113 *build/vignette.rds
 9d0edc0025e2ecfa12b6a5953ea8e48c *cleanup
 8cf65e8c0c97780fb6cb9ec6dd48e053 *configure
 d41d8cd98f00b204e9800998ecf8427e *configure.win
 65d5d6a4a9677c00533c0e7e72b074a3 *inst/WORDLIST
-57daa6e2ffd09705b018b12ffef8c18f *inst/doc/intro.R
-dcce3822b74d021a0f0394ec2aa5520b *inst/doc/intro.Rmd
-b4514c41bf58ec975221cf011c81374b *inst/doc/intro.html
+daa7d7d5a284b289a55028d8486ada26 *inst/doc/intro.R
+2a7e641429d63f9c7ea6c02f7b6179f4 *inst/doc/intro.Rmd
+b6aec11b3969c63babfa41ca2572d661 *inst/doc/intro.html
 cb98c2db09777e92b915cae3571feea6 *inst/doc/windows.R
 f95a63c1b3f623e42bb4c06e0773ffdc *inst/doc/windows.Rmd
 820017dde7dd5c1def708b99b4232ffd *inst/doc/windows.html
@@ -53,8 +53,8 @@ de88e7042890cd75989d4c603f3a6f9e *man/nslookup.Rd
 c9073ede40c65692e1a677818b8fa1c4 *man/parse_date.Rd
 c976314058dd2054466ec99f4a5c4934 *man/parse_headers.Rd
 ff68e9e63c5d55240e5886e644712cd5 *man/send_mail.Rd
-96d01aa7add85a163004f3ccc22d14de *src/Makevars.in
-7c506e4ec1a77bc0ccf6be8b20d18268 *src/Makevars.win
+5128bf1459df903a2096d433360e96f5 *src/Makevars.in
+e68f6272ed26b6703fc7f772fe5fae58 *src/Makevars.win
 6c1faa5b6b5285b60cf0e0c4c3fa969e *src/callbacks.c
 0116f70cd11872ef3b82667151af0cb3 *src/callbacks.h
 bf5f0edb7ac87f02070f3b7832357abb *src/curl-common.h
@@ -72,7 +72,7 @@ eb28cfd81ed27acf11b4b2e1e78e70bc *src/findport.c
 6f678f077beae2f265074ec47fa4ac79 *src/init.c
 77aec581e1e44be7f9dc2c0536234b0a *src/interrupt.c
 834bcddc3ffad53f91ea80489297f1a4 *src/macos-polyfill.h
-294ee25c54f6b1d92011a4c1108d48a7 *src/multi.c
+059c2c933d68167b027117b2a2c3a0df *src/multi.c
 415134cb4449e07f29e4520713bbb8e1 *src/nslookup.c
 da8bc6559d5825b8e72714f4970e8709 *src/options.c
 a2da2f492444a7a7906eb683b0c8f162 *src/reflist.c
@@ -97,7 +97,7 @@ f459de4b748f8a79e210ca622015484d *tests/testthat/test-cookies.R
 c0f8cca8151dd43b5fe22f7be7719d35 *tests/testthat/test-errors.R
 db3becb00fea8842e0cc95d508b7ea1e *tests/testthat/test-escape.R
 046ff19a10e22a699a328b85da768221 *tests/testthat/test-gc.R
-807810c4f1f50da92030c362aa68d8e4 *tests/testthat/test-handle.R
+dd72fcefc6737adf840a9a46b335834d *tests/testthat/test-handle.R
 f856b37b67b8ebcd565022e9d1a58f5c *tests/testthat/test-idn.R
 4522d1021ff70932b95746284f10009f *tests/testthat/test-multi-download.R
 9a814ce107893d160cdef965b0751fe8 *tests/testthat/test-multi.R
@@ -118,6 +118,6 @@ fbbc4b8b2fa239a770c3e6d45e9b84a1 *tests/testthat/test-winssl.R
 28148c1dadafbeebff2e6a056fa7dc75 *tools/testversion.R
 d069ed53e9c88e45193720b3c20d9f3c *tools/typelist.R
 6f3d6bbc5946a8893ae85cd1aa1b0465 *tools/typelist.h.in
-732f89ee1f119ddc47578bcb753411c0 *tools/winlibs.R
-dcce3822b74d021a0f0394ec2aa5520b *vignettes/intro.Rmd
+055a2ab335291a37ebdda8b3094b91a1 *tools/winlibs.R
+2a7e641429d63f9c7ea6c02f7b6179f4 *vignettes/intro.Rmd
 f95a63c1b3f623e42bb4c06e0773ffdc *vignettes/windows.Rmd
