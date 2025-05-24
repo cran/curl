@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2025-03-23" />
+<meta name="date" content="2025-05-24" />
 
 <title>The curl package: a modern R interface to libcurl</title>
 
@@ -1486,7 +1486,7 @@ font-size: 0.95em;
 
 <h1 class="title toc-ignore">The curl package: a modern R interface to
 libcurl</h1>
-<h4 class="date">2025-03-23</h4>
+<h4 class="date">2025-05-24</h4>
 
 </div>
 
@@ -1524,30 +1524,29 @@ str(req)</code></pre>
  $ url         : chr &quot;https://hb.cran.dev/get?foo=123&quot;
  $ status_code : int 200
  $ type        : chr &quot;application/json&quot;
- $ headers     : raw [1:869] 48 54 54 50 ...
+ $ headers     : raw [1:635] 48 54 54 50 ...
  $ modified    : POSIXct[1:1], format: NA
- $ times       : Named num [1:6] 0 0.0791 0.1032 0.151 0.4485 ...
+ $ times       : Named num [1:6] 0 0.034 0.0465 0.0648 0.1758 ...
   ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;redirect&quot; &quot;namelookup&quot; &quot;connect&quot; &quot;pretransfer&quot; ...
  $ scheme      : chr &quot;https&quot;
  $ http_version: int 2
  $ method      : chr &quot;GET&quot;
- $ content     : raw [1:514] 7b 0a 20 20 ...</code></pre>
+ $ content     : raw [1:558] 7b 0a 20 20 ...</code></pre>
 <pre class="r"><code>parse_headers(req$headers)</code></pre>
-<pre><code> [1] &quot;HTTP/2 200 &quot;                                                                                                                                                                                                                                                                       
- [2] &quot;date: Sun, 23 Mar 2025 13:24:47 GMT&quot;                                                                                                                                                                                                                                               
- [3] &quot;content-type: application/json&quot;                                                                                                                                                                                                                                                    
- [4] &quot;access-control-allow-origin: *&quot;                                                                                                                                                                                                                                                    
- [5] &quot;access-control-allow-credentials: true&quot;                                                                                                                                                                                                                                            
- [6] &quot;x-powered-by: Flask&quot;                                                                                                                                                                                                                                                               
- [7] &quot;x-processed-time: 0&quot;                                                                                                                                                                                                                                                               
- [8] &quot;cf-cache-status: DYNAMIC&quot;                                                                                                                                                                                                                                                          
- [9] &quot;report-to: {\&quot;endpoints\&quot;:[{\&quot;url\&quot;:\&quot;https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=NYo2ncOZ58f9fUeVU1rVp4cK%2B1iBDuSwNzLIigMFGStRG7hQg7zak7MgCW%2FkCEBmcJ2z4HQWD9vEFuNShQ2ERgyzWDcpo%2BIZqFx8L%2F%2FWyxD5eCWp1hwAHUPi0fDAtQ%3D%3D\&quot;}],\&quot;group\&quot;:\&quot;cf-nel\&quot;,\&quot;max_age\&quot;:604800}&quot;
-[10] &quot;nel: {\&quot;success_fraction\&quot;:0,\&quot;report_to\&quot;:\&quot;cf-nel\&quot;,\&quot;max_age\&quot;:604800}&quot;                                                                                                                                                                                                         
-[11] &quot;server: cloudflare&quot;                                                                                                                                                                                                                                                                
-[12] &quot;cf-ray: 924e4044ff610e7f-AMS&quot;                                                                                                                                                                                                                                                      
-[13] &quot;content-encoding: gzip&quot;                                                                                                                                                                                                                                                            
-[14] &quot;alt-svc: h3=\&quot;:443\&quot;; ma=86400&quot;                                                                                                                                                                                                                                                    
-[15] &quot;server-timing: cfL4;desc=\&quot;?proto=TCP&amp;rtt=26191&amp;min_rtt=24795&amp;rtt_var=7007&amp;sent=6&amp;recv=9&amp;lost=0&amp;retrans=0&amp;sent_bytes=3398&amp;recv_bytes=801&amp;delivery_rate=90153&amp;cwnd=246&amp;unsent_bytes=0&amp;cid=64cb7218e5d8ad5d&amp;ts=309&amp;x=0\&quot;&quot;                                                            </code></pre>
+<pre><code> [1] &quot;HTTP/2 200 &quot;                                                                                                                                                                                                                                             
+ [2] &quot;date: Sat, 24 May 2025 10:17:28 GMT&quot;                                                                                                                                                                                                                     
+ [3] &quot;content-type: application/json&quot;                                                                                                                                                                                                                          
+ [4] &quot;server: cloudflare&quot;                                                                                                                                                                                                                                      
+ [5] &quot;nel: {\&quot;report_to\&quot;:\&quot;cf-nel\&quot;,\&quot;success_fraction\&quot;:0.0,\&quot;max_age\&quot;:604800}&quot;                                                                                                                                                                             
+ [6] &quot;access-control-allow-origin: *&quot;                                                                                                                                                                                                                          
+ [7] &quot;access-control-allow-credentials: true&quot;                                                                                                                                                                                                                  
+ [8] &quot;x-powered-by: Flask&quot;                                                                                                                                                                                                                                     
+ [9] &quot;x-processed-time: 0&quot;                                                                                                                                                                                                                                     
+[10] &quot;cf-cache-status: DYNAMIC&quot;                                                                                                                                                                                                                                
+[11] &quot;report-to: {\&quot;group\&quot;:\&quot;cf-nel\&quot;,\&quot;max_age\&quot;:604800,\&quot;endpoints\&quot;:[{\&quot;url\&quot;:\&quot;https://a.nel.cloudflare.com/report/v4?s=ewHrN8ll9hUORzIq%2Fe%2BJVvkhv3bM7ccq4HtVrnMgcYCzzGOayjic7KVoTMXMer3IvVYIcdUA7pRSudZLOJdgLn40StW7hP1CatXCupsNB20c2aIkIg%3D%3D\&quot;}]}&quot;
+[12] &quot;content-encoding: gzip&quot;                                                                                                                                                                                                                                  
+[13] &quot;cf-ray: 944c0b1e69cad835-AMS&quot;                                                                                                                                                                                                                            
+[14] &quot;alt-svc: h3=\&quot;:443\&quot;; ma=86400&quot;                                                                                                                                                                                                                          </code></pre>
 <pre class="r"><code>jsonlite::prettify(rawToChar(req$content))</code></pre>
 <pre><code>{
     &quot;args&quot;: {
@@ -1557,15 +1556,15 @@ str(req)</code></pre>
         &quot;Accept&quot;: &quot;*/*&quot;,
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;924e4044ff610e7f-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;944c0b1e69cad835-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Host&quot;: &quot;httpbin:8080&quot;,
         &quot;User-Agent&quot;: &quot;R (4.5.0 aarch64-apple-darwin20 aarch64 darwin20)&quot;
     },
-    &quot;origin&quot;: &quot;89.205.130.100&quot;,
+    &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/get?foo=123&quot;
 }
  </code></pre>
@@ -1592,15 +1591,15 @@ jsonlite::prettify(readLines(tmp))</code></pre>
         &quot;Accept&quot;: &quot;*/*&quot;,
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;924e404719520e7f-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;944c0b1f6b95d835-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Host&quot;: &quot;httpbin:8080&quot;,
         &quot;User-Agent&quot;: &quot;R (4.5.0 aarch64-apple-darwin20 aarch64 darwin20)&quot;
     },
-    &quot;origin&quot;: &quot;89.205.130.100&quot;,
+    &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/get?bar=456&quot;
 }
  </code></pre>
@@ -1630,15 +1629,15 @@ cat(out, sep = &quot;\n&quot;)</code></pre>
 out &lt;- readLines(con)
 close(con)
 cat(out, sep = &quot;\n&quot;)</code></pre>
-<pre><code>    &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;, 
+<pre><code>    &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;, 
     &quot;Cf-Ipcountry&quot;: &quot;NL&quot;, 
-    &quot;Cf-Ray&quot;: &quot;924e40489b3efffa-EWR&quot;, 
+    &quot;Cf-Ray&quot;: &quot;944c0b208d290a64-EWR&quot;, 
     &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;, 
     &quot;Connection&quot;: &quot;close&quot;, 
     &quot;Host&quot;: &quot;httpbin:8080&quot;, 
     &quot;User-Agent&quot;: &quot;R (4.5.0 aarch64-apple-darwin20 aarch64 darwin20)&quot;
   }, 
-  &quot;origin&quot;: &quot;89.205.130.100&quot;, 
+  &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;, 
   &quot;url&quot;: &quot;https://httpbin:8080/get&quot;
 }</code></pre>
 <p>The example shows how to use <code>readLines</code> on an opened
@@ -1906,9 +1905,9 @@ jsonlite::prettify(rawToChar(req$content))</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;924e40514b720e7f-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;944c0b29ad51d835-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -1917,7 +1916,7 @@ jsonlite::prettify(rawToChar(req$content))</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;89.205.130.100&quot;,
+    &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>
@@ -1941,9 +1940,9 @@ jsonlite::prettify(readLines(con))</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;924e4052be46b8ed-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;944c0b2ab90a0e90-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -1952,7 +1951,7 @@ jsonlite::prettify(readLines(con))</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;89.205.130.100&quot;,
+    &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>
@@ -1977,9 +1976,9 @@ jsonlite::prettify(readLines(tmp))</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;924e4053fe680e7f-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;944c0b2bf910d835-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -1988,7 +1987,7 @@ jsonlite::prettify(readLines(tmp))</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;89.205.130.100&quot;,
+    &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>
@@ -2011,9 +2010,9 @@ out &lt;- multi_run()</code></pre>
     &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;, 
     &quot;Cache-Control&quot;: &quot;no-cache&quot;, 
     &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;, 
-    &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;, 
+    &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;, 
     &quot;Cf-Ipcountry&quot;: &quot;NL&quot;, 
-    &quot;Cf-Ray&quot;: &quot;924e4055795b1338-EWR&quot;, 
+    &quot;Cf-Ray&quot;: &quot;944c0b2cfe9fae32-EWR&quot;, 
     &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;, 
     &quot;Connection&quot;: &quot;close&quot;, 
     &quot;Content-Length&quot;: &quot;11&quot;, 
@@ -2022,7 +2021,7 @@ out &lt;- multi_run()</code></pre>
     &quot;User-Agent&quot;: &quot;A cow&quot;
   }, 
   &quot;json&quot;: null, 
-  &quot;origin&quot;: &quot;89.205.130.100&quot;, 
+  &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;, 
   &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }</code></pre>
 <div id="reading-cookies" class="section level3">
@@ -2075,11 +2074,11 @@ possible, eliminating TCP/SSL handshaking overhead:</p>
 <pre class="r"><code>req &lt;- curl_fetch_memory(&quot;https://api.github.com/users/ropensci&quot;)
 req$times</code></pre>
 <pre><code>     redirect    namelookup       connect   pretransfer starttransfer         total 
-     0.000000      0.026008      0.054922      0.091310      0.240690      0.240972 </code></pre>
+     0.000000      0.018793      0.037583      0.061078      0.198603      0.198917 </code></pre>
 <pre class="r"><code>req2 &lt;- curl_fetch_memory(&quot;https://api.github.com/users/rstudio&quot;)
 req2$times</code></pre>
 <pre><code>     redirect    namelookup       connect   pretransfer starttransfer         total 
-     0.000000      0.000185      0.000000      0.000259      0.174234      0.174490 </code></pre>
+     0.000000      0.000166      0.000000      0.000405      0.138812      0.139102 </code></pre>
 <p>If you really need to re-use a handle, do note that that curl does
 not cleanup the handle after each request. All of the options and
 internal fields will linger around for all future request until
@@ -2146,9 +2145,9 @@ res$content |&gt; rawToChar() |&gt; jsonlite::prettify()</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;89.205.130.100&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;924e40644d870e7f-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;944c0b380ddad835-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -2157,7 +2156,7 @@ res$content |&gt; rawToChar() |&gt; jsonlite::prettify()</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;89.205.130.100&quot;,
+    &quot;origin&quot;: &quot;2a02:a457:9668:1:590d:9758:a65f:b69f&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>
