@@ -1,7 +1,7 @@
 Package: curl
 Type: Package
 Title: A Modern and Flexible Web Client for R
-Version: 6.2.3
+Version: 6.3.0
 Authors@R: c(
     person("Jeroen", "Ooms", role = c("aut", "cre"), email = "jeroenooms@gmail.com",
       comment = c(ORCID = "0000-0002-4035-0289")),
@@ -25,10 +25,10 @@ RoxygenNote: 7.3.2.9000
 Encoding: UTF-8
 Language: en-US
 NeedsCompilation: yes
-Packaged: 2025-05-24 10:17:33 UTC; jeroen
+Packaged: 2025-06-06 11:51:43 UTC; jeroen
 Author: Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>),
   Hadley Wickham [ctb],
   Posit Software, PBC [cph]
 Maintainer: Jeroen Ooms <jeroenooms@gmail.com>
 Repository: CRAN
-Date/Publication: 2025-05-24 12:10:02 UTC
+Date/Publication: 2025-06-06 14:00:02 UTC
