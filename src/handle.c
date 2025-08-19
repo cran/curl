@@ -12,14 +12,6 @@ extern int r_curl_is_postfields_option(CURLoption x);
 #define MAX_PATH 1024
 #endif
 
-#if AT_LEAST_CURL(7, 32)
-#define HAS_XFERINFOFUNCTION 1
-#endif
-
-#if AT_LEAST_CURL(7, 36)
-#define HAS_CURLOPT_EXPECT_100_TIMEOUT_MS 1
-#endif
-
 static int total_handles = 0;
 
 void clean_handle(reference *ref){
@@ -57,11 +49,7 @@ static size_t dummy_read(char *buffer, size_t size, size_t nitems, void *instrea
   return 0;
 }
 
-#ifdef HAS_XFERINFOFUNCTION
 #define xftype curl_off_t
-#else
-#define xftype double
-#endif
 
 static int xferinfo_callback(void *clientp, xftype dltotal, xftype dlnow, xftype ultotal, xftype ulnow){
   static xftype dlprev = 0;
@@ -177,12 +165,20 @@ static void set_handle_defaults(reference *ref){
   assert(curl_easy_setopt(handle, CURLOPT_COOKIEFILE, ""));
   assert(curl_easy_setopt(handle, CURLOPT_FILETIME, 1L));
 
-  /* set the default user agent */
+  /* set the default user agent to match base R */
   SEXP agent = Rf_GetOption1(Rf_install("HTTPUserAgent"));
   if(Rf_isString(agent) && Rf_length(agent)){
     assert(curl_easy_setopt(handle, CURLOPT_USERAGENT, CHAR(STRING_ELT(agent, 0))));
   } else {
     assert(curl_easy_setopt(handle, CURLOPT_USERAGENT, "r/curl/jeroen"));
+  }
+
+  /* set the default netrc path to match base R */
+  SEXP netrc = Rf_GetOption1(Rf_install("netrc"));
+  if (Rf_isString(netrc) && Rf_length(netrc)) {
+    const char *path = R_ExpandFileName(CHAR(STRING_ELT(netrc, 0)));
+    assert(curl_easy_setopt(handle, CURLOPT_NETRC, CURL_NETRC_OPTIONAL));
+    assert(curl_easy_setopt(handle, CURLOPT_NETRC_FILE, path));
   }
 
   /* allow all authentication methods */
@@ -196,17 +192,11 @@ static void set_handle_defaults(reference *ref){
   assert(curl_easy_setopt(handle, CURLOPT_READFUNCTION, dummy_read));
 
   /* set default progress printer (disabled by default) */
-#ifdef HAS_XFERINFOFUNCTION
   assert(curl_easy_setopt(handle, CURLOPT_XFERINFOFUNCTION, xferinfo_callback));
-#else
-  assert(curl_easy_setopt(handle, CURLOPT_PROGRESSFUNCTION, xferinfo_callback));
-#endif
 
   /* Disable the 'Expect: 100' header (deprecated in recent libcurl) */
   set_headers(ref, NULL);
-#ifdef HAS_CURLOPT_EXPECT_100_TIMEOUT_MS
   assert(curl_easy_setopt(handle, CURLOPT_EXPECT_100_TIMEOUT_MS, 0L));
-#endif
 
   /* Send verbose outout to R front-end virtual stderr */
   assert(curl_easy_setopt(handle, CURLOPT_DEBUGFUNCTION, default_verbose_cb));
@@ -276,16 +266,14 @@ SEXP R_handle_setopt(SEXP ptr, SEXP keys, SEXP values){
     SEXP val = VECTOR_ELT(values, i);
     if(val == R_NilValue){
       set_user_option(key, NULL);
-#ifdef HAS_XFERINFOFUNCTION
     } else if (key == CURLOPT_XFERINFOFUNCTION) {
       if (TYPEOF(val) != CLOSXP)
         Rf_error("Value for option %s (%d) must be a function.", optname, key);
 
-      set_user_option(CURLOPT_XFERINFOFUNCTION, (curl_progress_callback) R_curl_callback_xferinfo);
+      set_user_option(CURLOPT_XFERINFOFUNCTION, (curl_xferinfo_callback) R_curl_callback_xferinfo);
       set_user_option(CURLOPT_XFERINFODATA, val);
       set_user_option(CURLOPT_NOPROGRESS, 0);
       SET_VECTOR_ELT(prot, 1, val); //protect gc
-#endif
     } else if (key == CURLOPT_PROGRESSFUNCTION) {
       if (TYPEOF(val) != CLOSXP)
         Rf_error("Value for option %s (%d) must be a function.", optname, key);
@@ -435,10 +423,8 @@ static SEXP make_info_http_version(CURL * handle){
     return Rf_ScalarInteger(1);
   case CURL_HTTP_VERSION_2_0:
     return Rf_ScalarInteger(2);
-#if AT_LEAST_CURL(7, 66)
   case CURL_HTTP_VERSION_3:
     return Rf_ScalarInteger(3);
-#endif
   default:
     return Rf_ScalarInteger(NA_INTEGER);
   }
@@ -500,9 +486,7 @@ SEXP make_handle_response(reference *ref){
   SET_VECTOR_ELT(res, 5, make_timevec(handle));
   SET_VECTOR_ELT(res, 6, make_info_string(handle, CURLINFO_SCHEME));
   SET_VECTOR_ELT(res, 7, make_info_http_version(handle));
-#ifdef HAS_CURLINFO_EFFECTIVE_METHOD
   SET_VECTOR_ELT(res, 8, make_info_string(handle, CURLINFO_EFFECTIVE_METHOD));
-#endif
   SET_VECTOR_ELT(res, 9, R_NilValue);
   Rf_setAttrib(res, R_NamesSymbol, make_namesvec());
   UNPROTECT(1);
@@ -517,17 +501,10 @@ SEXP R_get_handle_response(SEXP ptr){
 
 SEXP R_get_handle_speed(SEXP ptr){
   CURL *handle = get_handle(ptr);
-#ifdef USE_CURL_OFF_T
   curl_off_t dl = 0;
   curl_off_t ul = 0;
   curl_easy_getinfo(handle, CURLINFO_SPEED_DOWNLOAD_T, &dl);
   curl_easy_getinfo(handle, CURLINFO_SPEED_UPLOAD_T, &ul);
-#else
-  double dl = 0;
-  double ul = 0;
-  curl_easy_getinfo(handle, CURLINFO_SPEED_DOWNLOAD, &dl);
-  curl_easy_getinfo(handle, CURLINFO_SPEED_UPLOAD, &ul);
-#endif
   SEXP out = Rf_allocVector(REALSXP, 2);
   REAL(out)[0] = (double) dl;
   REAL(out)[1] = (double) ul;
@@ -536,25 +513,15 @@ SEXP R_get_handle_speed(SEXP ptr){
 
 SEXP R_get_handle_clength(SEXP ptr){
   CURL *handle = get_handle(ptr);
-#ifdef USE_CURL_OFF_T
   curl_off_t cl = 0;
   curl_easy_getinfo(handle, CURLINFO_CONTENT_LENGTH_DOWNLOAD_T, &cl);
-#else
-  double cl = 0;
-  curl_easy_getinfo(handle, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &cl);
-#endif
   return Rf_ScalarReal((double) cl < 0 ? NA_REAL : cl);
 }
 
 SEXP R_get_handle_received(SEXP ptr){
   CURL *handle = get_handle(ptr);
-#ifdef USE_CURL_OFF_T
   curl_off_t dl = 0;
   curl_easy_getinfo(handle, CURLINFO_SIZE_DOWNLOAD_T, &dl);
-#else
-  double dl = 0;
-  curl_easy_getinfo(handle, CURLINFO_SIZE_DOWNLOAD, &dl);
-#endif
   return Rf_ScalarReal((double) dl);
 }
 

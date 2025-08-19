@@ -5,7 +5,13 @@
 \alias{curl_modify_url}
 \title{Normalizing URL parser}
 \usage{
-curl_parse_url(url, baseurl = NULL, decode = TRUE, params = TRUE)
+curl_parse_url(
+  url,
+  baseurl = NULL,
+  decode = TRUE,
+  params = TRUE,
+  default_scheme = FALSE
+)
 
 curl_modify_url(
   url = NULL,
@@ -31,6 +37,8 @@ values. If set to \code{FALSE}, values for \code{query}, \code{path}, \code{frag
 
 \item{params}{named character vector with http GET parameters. This will automatically
 be converted to \code{application/x-www-form-urlencoded} and override \code{query},}
+
+\item{default_scheme}{when \code{url} is provided without a scheme prefix, assume \verb{https://}.}
 
 \item{scheme}{string with e.g. \code{https}. Required if no \code{url} parameter was given.}
 
@@ -84,12 +92,6 @@ to automatically infer or validate the query format, this is up to the caller.
 For more details on the URL format see
 \href{https://datatracker.ietf.org/doc/html/rfc3986}{rfc3986}
 or the steps explained in the \href{https://url.spec.whatwg.org/#concept-basic-url-parser}{whatwg basic url parser}.
-
-On platforms that do not have a recent enough curl version (basically only
-RHEL-8) the \href{https://github.com/ada-url/ada}{Ada URL} library is used as fallback.
-Results should be identical, though curl has nicer error messages. This is
-a temporary solution, we plan to remove the fallback when old systems are
-no longer supported.
 
 You can use \code{\link[=curl_modify_url]{curl_modify_url()}} both to modify an existing URL, or to
 create new URL from scratch. Arguments get automatically URL-encoded where

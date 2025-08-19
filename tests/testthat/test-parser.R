@@ -19,7 +19,7 @@ test_that("Basic URL parser",{
 
 test_that("Relative links need a baseurl",{
   base <- 'https://jerry:secret@google.com:888/foo/bar?x=1#nothing'
-  out1 <- curl_parse_url("/test1", base) #NB: curl does but ADA does not have nice error messages
+  out1 <- curl_parse_url("/test1", base)
   out2 <- curl_parse_url("./test2", base)
   out3 <- curl_parse_url("#bla", base)
   expect_equal(out1$url, "https://jerry:secret@google.com:888/test1")
@@ -67,4 +67,10 @@ test_that("Decoding parameters", {
   out$url <- NULL
   expect_equal(curl_modify_url(out), url)
   expect_equal(curl_modify_url(out, query = '', path = ''), 'https://www.test.com/')
+})
+
+test_that("Using a default scheme", {
+  expect_error(curl_parse_url('yolo'), 'parse')
+  out <- curl_parse_url('yolo', default_scheme = TRUE)
+  expect_equal(out$url, 'https://yolo/')
 })
