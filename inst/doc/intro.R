@@ -171,7 +171,7 @@ handle_cookies(h)
 
 ## ---------------------------------------------------------------------------------------------------------------------
 req1 <- curl_fetch_memory("https://hb.cran.dev/get")
-req2 <- curl_fetch_memory("https://www.r-project.org")
+req2 <- curl_fetch_memory("https://www.google.com")
 
 ## ---------------------------------------------------------------------------------------------------------------------
 req <- curl_fetch_memory("https://api.github.com/users/ropensci")
