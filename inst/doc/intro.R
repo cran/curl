@@ -122,14 +122,14 @@ handle_setopt(handle, useragent = 12345)
 curl::curl_symbols("CURLUSESSL")
 
 ## ---------------------------------------------------------------------------------------------------------------------
-handle_setopt(handle, use_ssl = 3)
+handle_setopt(handle, use_ssl = CURLUSESSL_ALL)
 
 ## ---------------------------------------------------------------------------------------------------------------------
 curl_symbols('CURL_HTTP_VERSION_')
 
 ## ---------------------------------------------------------------------------------------------------------------------
-# Force using HTTP 1.1 (the number 2 is an enum value, see above)
-handle_setopt(handle, http_version = 2)
+# Force using HTTP 1.1 (CURL_HTTP_VERSION_1_1 is an enum, not a real value)
+handle_setopt(handle, http_version = CURL_HTTP_VERSION_1_1)
 
 ## ---------------------------------------------------------------------------------------------------------------------
 req <- curl_fetch_memory("https://hb.cran.dev/post", handle = h)

@@ -133,7 +133,7 @@ multi_download <- function(urls, destfiles = NULL, resume = FALSE, progress = TR
       startsize <- file.info(dest)$size
       handle_setopt(handle, resume_from_large = startsize)
       total <<- total + startsize
-      resumefrom[i] <- startsize
+      resumefrom[i] <<- startsize
     }
     writer <- file_writer(dest, append = resume)
     multi_add(handle, pool = pool, data = function(buf, final){

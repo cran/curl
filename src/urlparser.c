@@ -97,5 +97,6 @@ SEXP R_modify_url(SEXP url, SEXP scheme, SEXP host, SEXP port, SEXP path, SEXP q
   fail_if(curl_url_get(h, CURLUPART_URL, &str, 0));
   SEXP out = make_string(str);
   curl_free(str);
+  curl_url_cleanup(h);
   return out;
 }

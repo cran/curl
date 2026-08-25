@@ -6,11 +6,11 @@ SEXP R_curl_getdate(SEXP datestring) {
     Rf_error("Argument 'datestring' must be string.");
 
   int len = Rf_length(datestring);
-  SEXP out = PROTECT(Rf_allocVector(INTSXP, len));
+  SEXP out = PROTECT(Rf_allocVector(REALSXP, len));
 
   for(int i = 0; i < len; i++){
     time_t date = curl_getdate(CHAR(STRING_ELT(datestring, i)), NULL);
-    INTEGER(out)[i] = date < 0 ? NA_INTEGER : (int) date;
+    REAL(out)[i] = date < 0 ? NA_REAL : (double) date;
   }
   UNPROTECT(1);
   return out;

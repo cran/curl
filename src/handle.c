@@ -44,7 +44,7 @@ static void fin_handle(SEXP ptr){
   clean_handle(ref);
 }
 
-/* the default readfunc os fread which can cause R to freeze */
+/* the default readfunc is fread which can cause R to freeze */
 static size_t dummy_read(char *buffer, size_t size, size_t nitems, void *instream){
   return 0;
 }
@@ -114,7 +114,7 @@ static int default_verbose_cb(CURL *handle, curl_infotype type, char *data, size
 }
 
 
-/* These are defaulst that we always want to set */
+/* These are defaults that we always want to set */
 static void set_handle_defaults(reference *ref){
 
   /* the actual curl handle */
@@ -198,7 +198,7 @@ static void set_handle_defaults(reference *ref){
   set_headers(ref, NULL);
   assert(curl_easy_setopt(handle, CURLOPT_EXPECT_100_TIMEOUT_MS, 0L));
 
-  /* Send verbose outout to R front-end virtual stderr */
+  /* Send verbose output to R front-end virtual stderr */
   assert(curl_easy_setopt(handle, CURLOPT_DEBUGFUNCTION, default_verbose_cb));
 
   /* Prefer using multiplex when possible */
@@ -324,7 +324,11 @@ SEXP R_handle_setopt(SEXP ptr, SEXP keys, SEXP values){
     } else if(r_curl_is_long_option(key)){
       if(!Rf_isNumeric(val) || Rf_length(val) != 1)
         Rf_error("Value for option %s (%d) must be a number.", optname, key);
-      set_user_option(key, (long) Rf_asInteger(val));
+      /* Go through double and long long because wide bitmasks such as
+         CURLAUTH_ANY (see R/values.R) exceed both INT_MAX and, on Windows,
+         LONG_MAX. There the truncation to 32-bit long keeps the low bits,
+         which is the exact value these masks have in a 32-bit C long. */
+      set_user_option(key, (long) (long long) Rf_asReal(val));
     } else if(r_curl_is_off_t_option(key)){
       if(!Rf_isNumeric(val) || Rf_length(val) != 1)
         Rf_error("Value for option %s (%d) must be a number.", optname, key);
@@ -431,17 +435,14 @@ static SEXP make_info_http_version(CURL * handle){
 }
 
 static SEXP make_filetime(CURL *handle){
-  long filetime;
-  assert(curl_easy_getinfo(handle, CURLINFO_FILETIME, &filetime));
-  if(filetime < 0){
-    filetime = NA_INTEGER;
-  }
+  curl_off_t filetime;
+  assert(curl_easy_getinfo(handle, CURLINFO_FILETIME_T, &filetime));
 
   SEXP classes = PROTECT(Rf_allocVector(STRSXP, 2));
   SET_STRING_ELT(classes, 0, Rf_mkChar("POSIXct"));
   SET_STRING_ELT(classes, 1, Rf_mkChar("POSIXt"));
 
-  SEXP out = PROTECT(Rf_ScalarInteger(filetime));
+  SEXP out = PROTECT(Rf_ScalarReal(filetime < 0 ? NA_REAL : (double) filetime));
   Rf_setAttrib(out, R_ClassSymbol, classes);
   UNPROTECT(2);
   return out;

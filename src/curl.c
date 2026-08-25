@@ -261,7 +261,7 @@ SEXP R_curl_connection(SEXP url, SEXP ptr, SEXP partial) {
   /* R wants description in native encoding, but we use UTF-8 URL below */
   SEXP rc = PROTECT(R_new_custom_connection(Rf_translateChar(STRING_ELT(url, 0)), "r", "curl", &con));
 
-  /* setup curl. These are the parts that are recycable. */
+  /* setup curl. These are the parts that are recyclable. */
   request *req = malloc(sizeof(request));
   req->handle = get_handle(ptr);
   req->ref = get_ref(ptr);

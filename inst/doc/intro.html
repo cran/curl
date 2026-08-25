@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2026-04-21" />
+<meta name="date" content="2026-08-25" />
 
 <title>The curl package: a modern R interface to libcurl</title>
 
@@ -1486,7 +1486,7 @@ font-size: 0.95em;
 
 <h1 class="title toc-ignore">The curl package: a modern R interface to
 libcurl</h1>
-<h4 class="date">2026-04-21</h4>
+<h4 class="date">2026-08-25</h4>
 
 </div>
 
@@ -1526,26 +1526,26 @@ str(req)</code></pre>
  $ type        : chr &quot;application/json&quot;
  $ headers     : raw [1:667] 48 54 54 50 ...
  $ modified    : POSIXct[1:1], format: NA
- $ times       : Named num [1:6] 0 0.0319 0.0445 0.0633 0.1743 ...
+ $ times       : Named num [1:6] 0 0.00244 0.01717 0.03825 0.15882 ...
   ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;redirect&quot; &quot;namelookup&quot; &quot;connect&quot; &quot;pretransfer&quot; ...
  $ scheme      : chr &quot;https&quot;
  $ http_version: int 2
  $ method      : chr &quot;GET&quot;
- $ content     : raw [1:558] 7b 0a 20 20 ...</code></pre>
+ $ content     : raw [1:562] 7b 0a 20 20 ...</code></pre>
 <pre class="r"><code>parse_headers(req$headers)</code></pre>
 <pre><code> [1] &quot;HTTP/2 200 &quot;                                                                                                                                                                                                                                                                             
- [2] &quot;date: Tue, 21 Apr 2026 14:47:48 GMT&quot;                                                                                                                                                                                                                                                     
+ [2] &quot;date: Tue, 25 Aug 2026 12:49:36 GMT&quot;                                                                                                                                                                                                                                                     
  [3] &quot;content-type: application/json&quot;                                                                                                                                                                                                                                                          
  [4] &quot;server: cloudflare&quot;                                                                                                                                                                                                                                                                      
- [5] &quot;nel: {\&quot;report_to\&quot;:\&quot;cf-nel\&quot;,\&quot;success_fraction\&quot;:0.0,\&quot;max_age\&quot;:604800}&quot;                                                                                                                                                                                                             
- [6] &quot;access-control-allow-origin: *&quot;                                                                                                                                                                                                                                                          
- [7] &quot;access-control-allow-credentials: true&quot;                                                                                                                                                                                                                                                  
- [8] &quot;x-powered-by: Flask&quot;                                                                                                                                                                                                                                                                     
- [9] &quot;x-processed-time: 0&quot;                                                                                                                                                                                                                                                                     
+ [5] &quot;access-control-allow-origin: *&quot;                                                                                                                                                                                                                                                          
+ [6] &quot;access-control-allow-credentials: true&quot;                                                                                                                                                                                                                                                  
+ [7] &quot;x-powered-by: Flask&quot;                                                                                                                                                                                                                                                                     
+ [8] &quot;x-processed-time: 0&quot;                                                                                                                                                                                                                                                                     
+ [9] &quot;nel: {\&quot;report_to\&quot;:\&quot;cf-nel\&quot;,\&quot;success_fraction\&quot;:0.0,\&quot;max_age\&quot;:604800}&quot;                                                                                                                                                                                                             
 [10] &quot;cf-cache-status: DYNAMIC&quot;                                                                                                                                                                                                                                                                
-[11] &quot;report-to: {\&quot;group\&quot;:\&quot;cf-nel\&quot;,\&quot;max_age\&quot;:604800,\&quot;endpoints\&quot;:[{\&quot;url\&quot;:\&quot;https://a.nel.cloudflare.com/report/v4?s=%2BMEe2PuNOsgbuTYaGFocN%2BWJ3BYf5HYAHkUiG%2BrVxvqdJPoP1b8JD6qt1YvHTfhLT37MLlpxlgFM233c8Yya3FYY7TbxGqjohN%2ByVHIsCBrKbjRryQ40JQv1fcobxyfhJDtICLYL7eLpKQ%3D%3D\&quot;}]}&quot;
+[11] &quot;report-to: {\&quot;group\&quot;:\&quot;cf-nel\&quot;,\&quot;max_age\&quot;:604800,\&quot;endpoints\&quot;:[{\&quot;url\&quot;:\&quot;https://a.nel.cloudflare.com/report/v4?s=XAHU0xaPmHPGO%2FfLPdPdhbf79mXmcFyVhC4M4SDzfbAzw7wrZFvduEL9NQGOkSOlLNuVg9nYpnjguAXb6tg0n8iRD0%2FLDerMXxinzlI3dDeoZI%2BqZV2nsY9xYj%2FsWjKKBeUWPXmqxOMQ5A%3D%3D\&quot;}]}&quot;
 [12] &quot;content-encoding: gzip&quot;                                                                                                                                                                                                                                                                  
-[13] &quot;cf-ray: 9efd2fa0e961da9e-AMS&quot;                                                                                                                                                                                                                                                            
+[13] &quot;cf-ray: a30ab7b8caadd9f2-AMS&quot;                                                                                                                                                                                                                                                            
 [14] &quot;alt-svc: h3=\&quot;:443\&quot;; ma=86400&quot;                                                                                                                                                                                                                                                          </code></pre>
 <pre class="r"><code>jsonlite::prettify(rawToChar(req$content))</code></pre>
 <pre><code>{
@@ -1556,15 +1556,15 @@ str(req)</code></pre>
         &quot;Accept&quot;: &quot;*/*&quot;,
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;9efd2fa0e961da9e-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;a30ab7b8caadd9f2-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Host&quot;: &quot;httpbin:8080&quot;,
-        &quot;User-Agent&quot;: &quot;R (4.5.3 aarch64-apple-darwin20 aarch64 darwin20)&quot;
+        &quot;User-Agent&quot;: &quot;R (4.6.1 aarch64-apple-darwin23 aarch64 darwin25.6.0)&quot;
     },
-    &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+    &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/get?foo=123&quot;
 }
  </code></pre>
@@ -1591,15 +1591,15 @@ jsonlite::prettify(readLines(tmp))</code></pre>
         &quot;Accept&quot;: &quot;*/*&quot;,
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;9efd2fa20ce8da9e-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;a30ab7b9de16d9f2-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Host&quot;: &quot;httpbin:8080&quot;,
-        &quot;User-Agent&quot;: &quot;R (4.5.3 aarch64-apple-darwin20 aarch64 darwin20)&quot;
+        &quot;User-Agent&quot;: &quot;R (4.6.1 aarch64-apple-darwin23 aarch64 darwin25.6.0)&quot;
     },
-    &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+    &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/get?bar=456&quot;
 }
  </code></pre>
@@ -1629,15 +1629,15 @@ cat(out, sep = &quot;\n&quot;)</code></pre>
 out &lt;- readLines(con)
 close(con)
 cat(out, sep = &quot;\n&quot;)</code></pre>
-<pre><code>    &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;, 
+<pre><code>    &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;, 
     &quot;Cf-Ipcountry&quot;: &quot;NL&quot;, 
-    &quot;Cf-Ray&quot;: &quot;9efd2fa338c7adc4-EWR&quot;, 
+    &quot;Cf-Ray&quot;: &quot;a30ab7bb0e3d7875-EWR&quot;, 
     &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;, 
     &quot;Connection&quot;: &quot;close&quot;, 
     &quot;Host&quot;: &quot;httpbin:8080&quot;, 
-    &quot;User-Agent&quot;: &quot;R (4.5.3 aarch64-apple-darwin20 aarch64 darwin20)&quot;
+    &quot;User-Agent&quot;: &quot;R (4.6.1 aarch64-apple-darwin23 aarch64 darwin25.6.0)&quot;
   }, 
-  &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;, 
+  &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;, 
   &quot;url&quot;: &quot;https://httpbin:8080/get&quot;
 }</code></pre>
 <p>The example shows how to use <code>readLines</code> on an opened
@@ -1759,9 +1759,12 @@ print(req$status_code)</code></pre>
 <pre><code>[1] 404</code></pre>
 <pre class="r"><code># This is not the CSV file we were expecting!
 head(readLines(&#39;mirrors.csv&#39;))</code></pre>
-<pre><code>[1] &quot;&lt;!DOCTYPE HTML PUBLIC \&quot;-//IETF//DTD HTML 2.0//EN\&quot;&gt;&quot;   &quot;&lt;html&gt;&lt;head&gt;&quot;                                          
-[3] &quot;&lt;title&gt;404 Not Found&lt;/title&gt;&quot;                           &quot;&lt;/head&gt;&lt;body&gt;&quot;                                         
-[5] &quot;&lt;h1&gt;Not Found&lt;/h1&gt;&quot;                                     &quot;&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;&quot;</code></pre>
+<pre><code>[1] &quot;&lt;!DOCTYPE HTML PUBLIC \&quot;-//W3C//DTD HTML 4.01//EN\&quot; \&quot;http://www.w3.org/TR/html4/strict.dtd\&quot;&gt;&quot;
+[2] &quot;&lt;html&gt;&lt;head&gt;&quot;                                                                                  
+[3] &quot;&lt;title&gt;404 Not Found&lt;/title&gt;&quot;                                                                  
+[4] &quot;&lt;/head&gt;&lt;body&gt;&quot;                                                                                 
+[5] &quot;&lt;h1&gt;Not Found&lt;/h1&gt;&quot;                                                                            
+[6] &quot;&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;&quot;                                        </code></pre>
 <pre class="r"><code>unlink(&#39;mirrors.csv&#39;)</code></pre>
 <p>If you <em>do</em> want the <code>curl_fetch_*</code> functions to
 automatically raise an error, you should set the <a href="https://curl.se/libcurl/c/CURLOPT_FAILONERROR.html"><code>FAILONERROR</code></a>
@@ -1824,16 +1827,10 @@ handle_setopt(handle, useragent = 12345)</code></pre>
 </div>
 <div id="enum-long-options" class="section level3">
 <h3>ENUM (long) options</h3>
-<p>Some curl options take an long in C that actually corresponds to an
+<p>Some curl options take a long in C that actually corresponds to an
 ENUM value.</p>
 <p>For example the <a href="https://curl.se/libcurl/c/CURLOPT_USE_SSL.html">CURLOPT_USE_SSL</a>
-docs explains that there are 4 possible values for this option:
-<code>CURLUSESSL_NONE</code>, <code>CURLUSESSL_TRY</code>,
-<code>CURLUSESSL_CONTROL</code>, and <code>CURLUSESSL_ALL</code>. To use
-this option you have to lookup the integer values for these enums in the
-symbol table. These symbol values never change, so you only need to
-lookup the value you need once and then hardcode the integer value in
-your R code.</p>
+docs explains that there are 4 possible values for this option:</p>
 <pre class="r"><code>curl::curl_symbols(&quot;CURLUSESSL&quot;)</code></pre>
 <pre><code>                   name introduced deprecated removed value type
 1111     CURLUSESSL_ALL     7.17.0       &lt;NA&gt;    &lt;NA&gt;     3 &lt;NA&gt;
@@ -1842,14 +1839,14 @@ your R code.</p>
 1114     CURLUSESSL_TRY     7.17.0       &lt;NA&gt;    &lt;NA&gt;     1 &lt;NA&gt;</code></pre>
 <p>So suppose we want to set <code>CURLOPT_USE_SSL</code> to
 <code>CURLUSESSL_ALL</code> we would use this R code:</p>
-<pre class="r"><code>handle_setopt(handle, use_ssl = 3)</code></pre>
+<pre class="r"><code>handle_setopt(handle, use_ssl = CURLUSESSL_ALL)</code></pre>
 </div>
 <div id="disabling-http2" class="section level3">
 <h3>Disabling HTTP/2</h3>
 <p>Another example is the <a href="https://curl.se/libcurl/c/CURLOPT_HTTP_VERSION.html">CURLOPT_HTTP_VERSION</a>
-option. This option is needed to disable or enable HTTP/2. However some
-users are not aware this is actually an ENUM and not a regular numeric
-value!</p>
+option. This option is needed to disable or enable HTTP/2 or HTTP/3.
+However some users are not aware this is actually an ENUM and not a
+regular numeric value.</p>
 <p>The <a href="https://curl.se/libcurl/c/CURLOPT_HTTP_VERSION.html">docs</a>
 explain HTTP_VERSION can be set to one of several strategies for
 negotiating the HTTP version between client and server. Valid values
@@ -1865,9 +1862,6 @@ are:</p>
 41                 CURL_HTTP_VERSION_3     7.66.0       &lt;NA&gt;    &lt;NA&gt;    30 &lt;NA&gt;
 42             CURL_HTTP_VERSION_3ONLY     7.88.0       &lt;NA&gt;    &lt;NA&gt;    31 &lt;NA&gt;
 43              CURL_HTTP_VERSION_NONE      7.9.1       &lt;NA&gt;    &lt;NA&gt;     0 &lt;NA&gt;</code></pre>
-<p>As seen, the value <code>2</code> corresponds to
-<code>CURL_HTTP_VERSION_1_1</code> and <code>3</code> corresponds to
-<code>CURL_HTTP_VERSION_2_0</code>.</p>
 <p>As of libcurl 7.62.0, the default <code>http_version</code> is
 <code>CURL_HTTP_VERSION_2TLS</code> which uses HTTP/2 when possible, but
 only for HTTPS connections. Package authors should usually leave the
@@ -1881,12 +1875,13 @@ is likely a problem with the HTTP/2 layer on the server.</p>
 server by forcing http 1.1 until the service has upgraded their
 webservers. To do so, set the <code>http_version</code> to
 <code>CURL_HTTP_VERSION_1_1</code> (value: <code>2</code>):</p>
-<pre class="r"><code># Force using HTTP 1.1 (the number 2 is an enum value, see above)
-handle_setopt(handle, http_version = 2)</code></pre>
-<p>Note that the value <code>1</code> corresponds to HTTP 1.0 which is a
-legacy version of HTTP that you should not use! Code that sets
+<pre class="r"><code># Force using HTTP 1.1 (CURL_HTTP_VERSION_1_1 is an enum, not a real value)
+handle_setopt(handle, http_version = CURL_HTTP_VERSION_1_1)</code></pre>
+<p>Note that a value <code>1</code> corresponds to HTTP 1.0 which is a
+legacy version of HTTP that you should not use. Code that sets
 <code>http_version</code> to <code>1</code> (or even <code>1.1</code>
-which R simply rounds to 1) is almost always a bug.</p>
+which R simply rounds to 1) is almost certainly a bug; we need to pick
+one of the <code>CURL_HTTP_VERSION*</code> values.</p>
 </div>
 </div>
 <div id="performing-the-request" class="section level2">
@@ -1913,9 +1908,9 @@ jsonlite::prettify(rawToChar(req$content))</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;9efd2fab4ae2da9e-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;a30ab7c23cadd9f2-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -1924,7 +1919,7 @@ jsonlite::prettify(rawToChar(req$content))</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+    &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>
@@ -1948,9 +1943,9 @@ jsonlite::prettify(readLines(con))</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;9efd2fac5d22de38-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;a30ab7c349dad5a1-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -1959,7 +1954,7 @@ jsonlite::prettify(readLines(con))</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+    &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>
@@ -1984,9 +1979,9 @@ jsonlite::prettify(readLines(tmp))</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;9efd2fad8954da9e-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;a30ab7c48cdcd9f2-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -1995,7 +1990,7 @@ jsonlite::prettify(readLines(tmp))</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+    &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>
@@ -2018,9 +2013,9 @@ out &lt;- multi_run()</code></pre>
     &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;, 
     &quot;Cache-Control&quot;: &quot;no-cache&quot;, 
     &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;, 
-    &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;, 
+    &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;, 
     &quot;Cf-Ipcountry&quot;: &quot;NL&quot;, 
-    &quot;Cf-Ray&quot;: &quot;9efd2faea83b25c2-EWR&quot;, 
+    &quot;Cf-Ray&quot;: &quot;a30ab7c5a997fb8d-EWR&quot;, 
     &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;, 
     &quot;Connection&quot;: &quot;close&quot;, 
     &quot;Content-Length&quot;: &quot;11&quot;, 
@@ -2029,7 +2024,7 @@ out &lt;- multi_run()</code></pre>
     &quot;User-Agent&quot;: &quot;A cow&quot;
   }, 
   &quot;json&quot;: null, 
-  &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;, 
+  &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;, 
   &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }</code></pre>
 <div id="reading-cookies" class="section level3">
@@ -2082,11 +2077,11 @@ possible, eliminating TCP/SSL handshaking overhead:</p>
 <pre class="r"><code>req &lt;- curl_fetch_memory(&quot;https://api.github.com/users/ropensci&quot;)
 req$times</code></pre>
 <pre><code>     redirect    namelookup       connect   pretransfer starttransfer         total 
-     0.000000      0.017162      0.036508      0.061632      0.212943      0.213294 </code></pre>
+     0.000000      0.017793      0.037719      0.061137      0.215296      0.215579 </code></pre>
 <pre class="r"><code>req2 &lt;- curl_fetch_memory(&quot;https://api.github.com/users/rstudio&quot;)
 req2$times</code></pre>
 <pre><code>     redirect    namelookup       connect   pretransfer starttransfer         total 
-     0.000000      0.000000      0.000000      0.000429      0.173256      0.173588 </code></pre>
+     0.000000      0.000000      0.000000      0.000182      0.184913      0.185165 </code></pre>
 <p>If you really need to re-use a handle, do note that that curl does
 not cleanup the handle after each request. All of the options and
 internal fields will linger around for all future request until
@@ -2153,9 +2148,9 @@ res$content |&gt; rawToChar() |&gt; jsonlite::prettify()</code></pre>
         &quot;Accept-Encoding&quot;: &quot;gzip, br&quot;,
         &quot;Cache-Control&quot;: &quot;no-cache&quot;,
         &quot;Cdn-Loop&quot;: &quot;cloudflare; loops=1&quot;,
-        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+        &quot;Cf-Connecting-Ip&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
         &quot;Cf-Ipcountry&quot;: &quot;NL&quot;,
-        &quot;Cf-Ray&quot;: &quot;9efd2fba2b9dda9e-EWR&quot;,
+        &quot;Cf-Ray&quot;: &quot;a30ab7d099a1d9f2-EWR&quot;,
         &quot;Cf-Visitor&quot;: &quot;{\&quot;scheme\&quot;:\&quot;https\&quot;}&quot;,
         &quot;Connection&quot;: &quot;close&quot;,
         &quot;Content-Length&quot;: &quot;11&quot;,
@@ -2164,7 +2159,7 @@ res$content |&gt; rawToChar() |&gt; jsonlite::prettify()</code></pre>
         &quot;User-Agent&quot;: &quot;A cow&quot;
     },
     &quot;json&quot;: null,
-    &quot;origin&quot;: &quot;2a02:a457:9668:1:a5ba:d21b:b99f:5aa8&quot;,
+    &quot;origin&quot;: &quot;2a02:a469:2bc9:1:f124:356b:d075:777c&quot;,
     &quot;url&quot;: &quot;https://httpbin:8080/post&quot;
 }
  </code></pre>

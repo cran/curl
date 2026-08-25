@@ -23,7 +23,7 @@ curl_upload <- function(file, url, verbose = TRUE, reuse = TRUE, ...) {
   } else if(inherits(file, 'connection')){
     file
   } else {
-    stop("Parameter 'file' must be a ")
+    stop("Parameter 'file' must be a file path or connection object")
   }
   on.exit(close(con))
   total_bytes <- 0

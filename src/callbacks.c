@@ -46,11 +46,16 @@ size_t R_curl_callback_read(char *buffer, size_t size, size_t nitems, SEXP fun) 
 
   if (TYPEOF(res) != RAWSXP) {
     UNPROTECT(3);
-    Rf_warning("read callback must raw vector");
+    Rf_warning("read callback must return a raw vector");
     return CURL_READFUNC_ABORT;
   }
 
   size_t bytes_read = Rf_length(res);
+  if (bytes_read > size * nitems) {
+    UNPROTECT(3);
+    Rf_warning("read callback returned more data than requested");
+    return CURL_READFUNC_ABORT;
+  }
   if (bytes_read) memcpy(buffer, RAW_RO(res), bytes_read);
 
   UNPROTECT(3);

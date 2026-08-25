@@ -205,7 +205,7 @@ SEXP R_multi_run(SEXP pool_ptr, SEXP timeout, SEXP max){
     int numfds;
     double waitforit = fmin(time_max - seconds_elapsed, 1); //at most 1 sec to support interrupts
     if(time_max > 0)
-      massert(curl_multi_wait(multi, NULL, 0, (int) waitforit * 1000, &numfds));
+      massert(curl_multi_wait(multi, NULL, 0, (int) (waitforit * 1000), &numfds));
 
     /* poll libcurl for new data - updates total_pending */
     if(curl_multi_perform(multi, &(total_pending)) != CURLM_OK)

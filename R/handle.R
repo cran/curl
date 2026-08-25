@@ -222,7 +222,7 @@ total_handles <- function(){
   .Call(R_total_handles)
 }
 
-## Some hacks for backward compatibilty
+## Some hacks for backward compatibility
 fix_options <- function(opt_names){
   # Recent libcurl should use xferinfo instead of progress
   has_xferinfo <- length(curl_options("xferinfofunction"))
