@@ -143,7 +143,7 @@ parse_query_urlencoded <- function(query){
   query <- chartr('+',' ', query)
   argstr <- strsplit(query, "&", fixed = TRUE)[[1]]
   args <- lapply(argstr, function(x){
-    c(curl_unescape(strsplit(x, "=", fixed = TRUE)[[1]]), "")
+    c(curl_unescape(split_string(x, "=")), "")
   })
   values <- vapply(args, `[`, character(1), 2)
   names(values) <- vapply(args, `[`, character(1), 1)
@@ -157,8 +157,4 @@ build_query_urlencoded <- function(params){
   nms <- curl_escape(names(params))
   values <- gsub("%20", "+", curl_escape(params), fixed = TRUE)
   paste(nms, values, collapse = '&', sep = '=')
-}
-
-try_parse_url <- function(url){
-  tryCatch(curl_parse_url(url), error = function(e){})
 }

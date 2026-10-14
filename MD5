@@ -1,7 +1,7 @@
-e82d714ec4704bf4e3bab0abc8739cd8 *DESCRIPTION
+39020f80695d8c5c55cd79c6b574cb29 *DESCRIPTION
 01539ed736815b69d1b0a988da856ae0 *LICENSE
 4a27471d8c89330102bb74d86a6303f6 *NAMESPACE
-936c45ed5cb5e4128b7e91a5f9b30bf1 *NEWS
+0df791e0746ab9fa7023cd3cae06e99d *NEWS
 fe45fdd16ed871f4f6de3bd1552b7576 *R/curl.R
 1d1634715543b4c25ba76da027e9a93c *R/download.R
 d152b62af078673f81edc2b2bac0fb52 *R/echo.R
@@ -17,11 +17,11 @@ c6c5182b1629ba6080707e80026cf3ca *R/escape.R
 710991923092e7f4c078e224898e6e6c *R/onload.R
 421f406a8e0df1ea48c4fd7491d3b9f7 *R/options.R
 f0da3fee89097019da87ac2efb9bbb34 *R/parse_headers.R
-8451e50dc665606caebc047d8ac5ebd6 *R/parser.R
+7502af368a990fa3f8e9c98ad0e6e258 *R/parser.R
 00d9febe6d46855a086c6312799bbb47 *R/proxy.R
 d2d795b9b7de427a846cbf1e10f67361 *R/sysdata.rda
 cb94b76f8e0fd4231cf59c0b2b55cb62 *R/upload.R
-fd1b39731b1c75324aba5fb9dd335da9 *R/utilities.R
+1f832462539fe8efebc91b19e13296d8 *R/utilities.R
 9dba176e64ad06e7b52bf806d7582c4b *R/values.R
 d2761c5dac1f5b09e0532fb478c2a0e7 *R/writer.R
 3cfde25018dd89878f96f5b4a432d252 *build/vignette.rds
@@ -31,10 +31,10 @@ d41d8cd98f00b204e9800998ecf8427e *configure.win
 5b7c1833eb7b80eac9c125f032acb711 *inst/WORDLIST
 9e964bd9d579aab3affde5fd99ee52b1 *inst/doc/intro.R
 4915c9ed77da9324d67683c83111edf9 *inst/doc/intro.Rmd
-f749e79543b0334d4a5d135435672cbe *inst/doc/intro.html
+438db7d796393ef47ae43e16b90f4b8d *inst/doc/intro.html
 cb98c2db09777e92b915cae3571feea6 *inst/doc/windows.R
 f95a63c1b3f623e42bb4c06e0773ffdc *inst/doc/windows.Rmd
-1cb6eab6656729541dd04b1c485d4b9f *inst/doc/windows.html
+38135cc19108803a6d2b469f4a84df3c *inst/doc/windows.html
 60897591df18d118cdc7c276e106a660 *man/curl.Rd
 529b7180ff7f2b7d834a7831808fd26d *man/curl_download.Rd
 635063b2bb193821a595668a4c98ccb1 *man/curl_echo.Rd
@@ -65,8 +65,8 @@ c543217f12178b4f477b87830e5e19e4 *src/curl.c
 5fa5a53361cd68b148f880fa3fd4bd0d *src/dryrun.c
 238550f88719a42790de5a49a24a5095 *src/escape.c
 df117e6b30086cb29d16780399825811 *src/fetch.c
-eb28cfd81ed27acf11b4b2e1e78e70bc *src/findport.c
-675ea8c9850ef9498875e34f837f2c1a *src/form.c
+81c5da412e5f1b15e61641cafcb7cfe6 *src/findport.c
+1349d8e3bf31d5c8b9711a09df70073a *src/form.c
 f1f00be12ed4b3cfbae288b6472d201d *src/getdate.c
 02b1946ab2830f4f440d08cdccf375ae *src/handle.c
 3e406695a51eb389f9020845f71aaf91 *src/ieproxy.c
@@ -81,7 +81,7 @@ a2da2f492444a7a7906eb683b0c8f162 *src/reflist.c
 eac03ea79b4f2b26162523432c84c510 *src/ssl.c
 cfdf18293c0c9381f50a31899b31992a *src/typechecking.c
 ce2fd996293c82a272cebf00429978c8 *src/urlparser.c
-bd3fba93c991df6f2e6152e15982784a *src/utils.c
+34b032ad565669a36fabfc0e445cdefc *src/utils.c
 3688f2608cd08f657bfc70bdd850e051 *src/version.c
 b91834f5e6c4451cdeea84e407dee779 *src/winidn.c
 0cc271334c5be6c7b13bf4dcabf18ba6 *src/writer.c
@@ -103,9 +103,9 @@ f856b37b67b8ebcd565022e9d1a58f5c *tests/testthat/test-idn.R
 4522d1021ff70932b95746284f10009f *tests/testthat/test-multi-download.R
 b36e0f11269dafb35abfbe99bbd5a63e *tests/testthat/test-multi.R
 25264260d701d9509302b5d9fdfad310 *tests/testthat/test-nonblocking.R
-ab3933f567a24ff644c897ac92f64f79 *tests/testthat/test-parser.R
+8167ce051d936e2d4f9a740c3666ed52 *tests/testthat/test-parser.R
 9b51b1c3fca8b7d7182b0b81962cd9c7 *tests/testthat/test-path.R
-e03e71d4977089ac9ab6fb0f93fd9873 *tests/testthat/test-post.R
+9794123270404332db2146dcaca54374 *tests/testthat/test-post.R
 ea884b2a4a967448427976a3fc64d310 *tests/testthat/test-progress.R
 dab7a1069a4a697557401ce6c77b7b2d *tests/testthat/test-seek.R
 562e90b5ab94cfc4da54442f3feca8e3 *tests/testthat/test-upload.R
@@ -119,6 +119,6 @@ fbbc4b8b2fa239a770c3e6d45e9b84a1 *tests/testthat/test-winssl.R
 1d164b468641ed76202845efcd10e58b *tools/symbols.R
 28148c1dadafbeebff2e6a056fa7dc75 *tools/testversion.R
 1e784ce5bb4ab2dcb57e77dd36d9263a *tools/version.c
-964b22d6c581409c023fdf95fef40a2c *tools/winlibs.R
+87111aae39d1397eb4e0d990a3d9865a *tools/winlibs.R
 4915c9ed77da9324d67683c83111edf9 *vignettes/intro.Rmd
 f95a63c1b3f623e42bb4c06e0773ffdc *vignettes/windows.Rmd
